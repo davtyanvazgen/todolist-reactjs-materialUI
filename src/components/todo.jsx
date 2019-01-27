@@ -16,7 +16,14 @@ class TodoForm extends Component {
 
   handleSbmit = event => {
     event.preventDefault();
-    if (this.state.text !== "") {
+    let checkText = true;
+    this.props.allLists.findIndex(index => {
+      if (index.text == this.state.text) {
+        return (checkText = false);
+      }
+    });
+
+    if (/\S/.test(this.state.text) && checkText) {
       this.props.onAdd({
         text: this.state.text,
         complete: false
@@ -39,6 +46,7 @@ class TodoForm extends Component {
       fontStyle: "oblique",
       color: "white"
     };
+
     return (
       <React.Fragment>
         <Typography variant="h4">

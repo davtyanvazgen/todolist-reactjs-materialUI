@@ -31,16 +31,22 @@ class TodoList extends Component {
       borderBottom: "2px solid black",
       marginTop: "-16px"
     };
+    const textStyle = {
+      overflow: "hidden ",
+      textOverflow: "ellipsis"
+    };
 
     return (
       <React.Fragment>
         <List onClick={this.handleList}>
           <ListItem button style={listStyle}>
-            <Typography variant="subheading">{this.props.text}</Typography>
+            <Typography style={textStyle} variant="subheading">
+              {this.props.text}
+            </Typography>
 
-            <ListItemSecondaryAction>
+            <ListItemSecondaryAction onClick={this.props.removeList}>
               <IconButton aria-label="Delete">
-                <DeleteIcon onClick={this.props.removeList} />
+                <DeleteIcon />
               </IconButton>
             </ListItemSecondaryAction>
           </ListItem>

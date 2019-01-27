@@ -36,11 +36,11 @@ class App extends Component {
 
     return (
       <div style={divStyle}>
-        <TodoForm onAdd={this.addTodo} />
+        <TodoForm allLists={this.state.todos} onAdd={this.addTodo} />
         <div style={miniDivStyle}>
           {this.state.todos.map((todo, index) => (
             <TodoList
-              key={todo.text + index}
+              key={todo.text}
               done={todo.complete}
               text={todo.text}
               removeList={() => this.deleteList(todo.text)}
